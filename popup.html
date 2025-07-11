@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 350px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0 0 20px 0;
+            color: #333;
+            font-size: 18px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="number"], input[type="color"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        input[type="number"] {
+            width: 80px;
+        }
+        .color-input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .zoom-input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        button {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #3367d6;
+        }
+        .current-site {
+            background: #e8f0fe;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: #1a73e8;
+        }
+        .saved-sites {
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .saved-site {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            margin-bottom: 5px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .saved-site-info {
+            flex: 1;
+        }
+        .delete-btn {
+            background: #ea4335;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+            width: auto;
+            margin: 0;
+        }
+        .delete-btn:hover {
+            background: #d33b2c;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            text-align: center;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Website Customizer</h1>
+        
+        <div id="currentSite" class="current-site">
+            Current site: <span id="currentUrl">Loading...</span>
+        </div>
+        
+        <div class="form-group">
+            <label for="rootUrl">Root URL:</label>
+            <input type="text" id="rootUrl" placeholder="e.g., google.com or reddit.com">
+        </div>
+        
+        <div class="form-group">
+            <label for="zoomLevel">Zoom Level (%):</label>
+            <div class="zoom-input-group">
+                <input type="number" id="zoomLevel" min="25" max="500" value="100">
+                <span>%</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="backgroundColor">Background Color:</label>
+            <div class="color-input-group">
+                <input type="color" id="backgroundColor" value="#ffffff">
+                <span id="colorPreview">#ffffff</span>
+            </div>
+        </div>
+        
+        <button id="saveBtn">Save Settings</button>
+        <button id="applyCurrentBtn">Apply to Current Site</button>
+        
+        <div id="status" class="status" style="display: none;"></div>
+        
+        <div class="saved-sites">
+            <h3>Saved Sites:</h3>
+            <div id="savedSitesList"></div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
